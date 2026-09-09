@@ -1,0 +1,672 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 280px;
+    height: 100vh;
+
+    background: white;
+
+    border-right: 1px solid #ddd;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1000;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.25s ease;
+
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Sidebar Open */
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+
+/* =========================
+   SIDEBAR HEADER
+========================= */
+
+.sidebar-header {
+    height: 65px;
+
+    padding: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar-header h2 {
+    font-size: 18px;
+
+    color: #222;
+}
+
+
+/* Close */
+
+#closeSidebarBtn {
+    border: none;
+
+    background: transparent;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    padding: 5px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.chat-search-box {
+    padding: 12px 15px 5px;
+}
+
+#chatSearch {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    background: #f7f7f7;
+}
+
+#chatSearch:focus {
+    border-color: #999;
+
+    background: white;
+}
+
+
+/* =========================
+   NEW CHAT
+========================= */
+
+.sidebar-new-chat {
+    margin: 10px 15px 15px;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #222;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.sidebar-new-chat:hover {
+    opacity: 0.85;
+}
+
+
+/* =========================
+   CHAT HISTORY
+========================= */
+
+.chat-history-list {
+    flex: 1;
+
+    padding: 0 10px 10px;
+
+    overflow-y: auto;
+}
+
+
+/* Chat item */
+
+.chat-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    padding: 10px;
+
+    margin-bottom: 5px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: background 0.15s ease;
+}
+
+.chat-item:hover {
+    background: #eeeeee;
+}
+
+
+/* Active chat */
+
+.chat-item.active {
+    background: #e5e5e5;
+
+    font-weight: bold;
+}
+
+
+/* Title */
+
+.chat-title {
+    flex: 1;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 14px;
+
+    color: #333;
+}
+
+
+/* Delete */
+
+.delete-chat-btn {
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    padding: 4px;
+
+    opacity: 0.6;
+}
+
+.delete-chat-btn:hover {
+    opacity: 1;
+
+    transform: scale(1.1);
+}
+
+
+/* =========================
+   MAIN CHAT
+========================= */
+
+.chat-container {
+    width: 90%;
+
+    max-width: 1200px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background: #222;
+
+    color: white;
+
+    padding: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.header h1 {
+    background: none;
+
+    color: white;
+
+    font-size: 22px;
+
+    text-align: center;
+}
+
+
+/* New Chat */
+
+#newChatBtn {
+    padding: 8px 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: #222;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+#newChatBtn:hover {
+    opacity: 0.85;
+}
+
+
+/* Menu */
+
+.menu-btn {
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    padding: 2px 5px;
+}
+
+
+/* =========================
+   CHAT BOX
+========================= */
+
+.chat-box {
+    height: 500px;
+
+    padding: 20px;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+.message {
+    padding: 12px 15px;
+
+    border-radius: 12px;
+
+    max-width: 80%;
+
+    line-height: 1.5;
+
+    word-wrap: break-word;
+}
+
+
+/* Bot */
+
+.message.bot {
+    background: #eeeeee;
+
+    align-self: flex-start;
+}
+
+
+/* User */
+
+.message.user {
+    background: #222;
+
+    color: white;
+
+    align-self: flex-end;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-area {
+    display: flex;
+
+    padding: 15px;
+
+    border-top: 1px solid #ddd;
+
+    gap: 10px;
+}
+
+#userInput {
+    flex: 1;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+#sendBtn {
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #222;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+#sendBtn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   MARKDOWN
+========================= */
+
+.message.bot h1,
+.message.bot h2,
+.message.bot h3 {
+    margin: 10px 0;
+}
+
+.message.bot p {
+    margin: 8px 0;
+}
+
+.message.bot ul,
+.message.bot ol {
+    margin: 8px 0 8px 20px;
+}
+
+.message.bot code {
+    background: #ddd;
+
+    padding: 2px 5px;
+
+    border-radius: 4px;
+
+    font-family: monospace;
+}
+
+.message.bot pre {
+    background: #1e1e1e;
+
+    color: white;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    overflow-x: auto;
+
+    margin: 10px 0;
+}
+
+.message.bot pre code {
+    background: transparent;
+
+    padding: 0;
+
+    color: white;
+}
+
+
+/* =========================
+   COPY
+========================= */
+
+.copy-btn {
+    display: block;
+
+    margin-top: 10px;
+
+    padding: 6px 10px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #ddd;
+
+    color: #222;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+.copy-btn:hover {
+    background: #ccc;
+}
+
+
+/* =========================
+   REGENERATE
+========================= */
+
+.regenerate-btn {
+    margin-top: 10px;
+
+    margin-right: 6px;
+
+    padding: 6px 10px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    background: #ddd;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        display: block;
+
+        min-height: 100vh;
+
+        background: white;
+    }
+
+    .sidebar {
+        width: 280px;
+
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .chat-container {
+        width: 100%;
+
+        max-width: 100%;
+
+        min-height: 100vh;
+
+        border-radius: 0;
+
+        box-shadow: none;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+    .header {
+        padding: 12px 15px;
+
+        flex-shrink: 0;
+
+        gap: 8px;
+    }
+
+    .header h1 {
+        flex: 1;
+
+        font-size: 18px;
+
+        text-align: center;
+    }
+
+    #newChatBtn {
+        padding: 7px 10px;
+
+        font-size: 13px;
+    }
+
+    .chat-box {
+        flex: 1;
+
+        height: auto;
+
+        min-height: 0;
+
+        padding: 15px 12px;
+
+        overflow-y: auto;
+    }
+
+    .message {
+        max-width: 88%;
+
+        padding: 10px 12px;
+
+        font-size: 15px;
+
+        line-height: 1.5;
+    }
+
+    .input-area {
+        padding: 10px;
+
+        gap: 8px;
+
+        flex-shrink: 0;
+
+        background: white;
+    }
+
+    #userInput {
+        min-width: 0;
+
+        padding: 11px;
+
+        font-size: 15px;
+    }
+
+    #sendBtn {
+        padding: 11px 14px;
+
+        font-size: 14px;
+    }
+
+    .message.bot pre {
+        max-width: 100%;
+
+        overflow-x: auto;
+
+        font-size: 13px;
+    }
+
+    .message.bot code {
+        font-size: 13px;
+    }
+
+    .copy-btn,
+    .regenerate-btn {
+        font-size: 12px;
+
+        padding: 6px 9px;
+    }
+}

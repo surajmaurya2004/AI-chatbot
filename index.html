@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Chatbot</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <h2>💬 Chats</h2>
+
+            <button id="closeSidebarBtn" type="button">
+                ✕
+            </button>
+
+        </div>
+
+        <!-- Search -->
+        <div class="chat-search-box">
+
+            <input
+                type="text"
+                id="chatSearch"
+                placeholder="🔍 Search chats..."
+                autocomplete="off"
+            >
+
+        </div>
+
+        <!-- New Chat -->
+        <button
+            id="sidebarNewChatBtn"
+            class="sidebar-new-chat"
+            type="button"
+        >
+            ＋ New Chat
+        </button>
+
+        <!-- Chat History -->
+        <div
+            id="chatHistoryList"
+            class="chat-history-list"
+        ></div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CHAT
+    ========================== -->
+
+    <div class="chat-container">
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <button
+                id="menuBtn"
+                class="menu-btn"
+                type="button"
+            >
+                ☰
+            </button>
+
+            <h1>🤖 AI Chatbot</h1>
+
+            <button
+                id="newChatBtn"
+                type="button"
+            >
+                ＋ New Chat
+            </button>
+
+        </div>
+
+
+        <!-- CHAT BOX -->
+
+        <div
+            id="chatBox"
+            class="chat-box"
+        >
+
+            <div class="message bot">
+                Hello! 👋 How can I help you?
+            </div>
+
+        </div>
+
+
+        <!-- INPUT -->
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Type a message..."
+                autocomplete="off"
+            >
+
+            <button
+                id="sendBtn"
+                type="button"
+            >
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
